@@ -8,7 +8,12 @@ export default class App extends Component {
     super();
     this.state = {
       show: true,
+      count: 0,
     };
+  }
+
+  componentDidMount() {
+    setInterval(() => this.setState({ count: this.state.count + 1 }), 1000);
   }
 
   render() {
@@ -21,6 +26,7 @@ export default class App extends Component {
           Click to show the person's profile
         </button>
         {this.state.show && <Person />}
+        <h2> {this.state.count}</h2>
       </div>
     );
   }
